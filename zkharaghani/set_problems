@@ -1,0 +1,54 @@
+
+sampleParagraph = """My favorite childhood toys reflect the places I lived 
+in when I was young. My favorite toy as a child of seven years old was the 
+dried fallen branches in the woods. There was a small one behind our house 
+and it provided endless fun for me and my brothers and sisters. Collected
+sticks and branches became our castle, our fort, and our play home. Wood 
+pieces gave us play swords, fishing rods, umbrellas, and jungle gyms.
+They were my best childhood toy because they contained so many other toys.
+What I most loved to play with at eight years old was dirt marbles. We lived
+in a neighborhood where there was an eternal pit of mud on the strip of grass 
+in front of our apartment. My brothers and I would mix the smooth mud with 
+sand from the side of the road, roll it into balls and leave them to dry in
+ the hot afternoon sun."""
+# ================================================================================
+# Finding the total number of "words" in paragraph.
+
+sampleParagraphList = sampleParagraph.split(" ")
+# print(sampleParagraphList)
+print(f' The total number of "words" in paragraph is {len(sampleParagraphList)}')
+
+# ================================================================================
+# Finding the total number of "unique words" in paragraph.
+
+sampleParagraphSet = set(sampleParagraphList)
+# print(sampleParagraphSet)
+print(f' The total number of "unique words" in paragraph is {len(sampleParagraphSet)}')
+
+# ================================================================================
+# Finding the total number of "to be verbs" in paragraph.
+
+tobeList = ['am', 'is', 'are', 'was', 'were']
+counter = 0
+summation = 0
+while counter < len(sampleParagraphList):
+    for item in sampleParagraphList:
+        counter += 1
+        if item.lower() in tobeList:
+            summation += 1
+print(f'The number of "to be" verbs are {summation}')
+
+# ================================================================================
+# Finding the number of each "to be verb" in paragraph.
+
+sampleParagraphList = sampleParagraph.lower().split(" ")
+amCount = sampleParagraphList.count('am')
+print(f'the number of "am" is {amCount}')
+isCount = sampleParagraphList.count('is')
+print(f'the number of "is" is {isCount}')
+areCount = sampleParagraphList.count('are')
+print(f'the number of "are" is {areCount}')
+wasCount = sampleParagraphList.count('was')
+print(f'the number of "was" is {wasCount}')
+wereCount = sampleParagraphList.count('were')
+print(f'the number of "were" is {wereCount}')

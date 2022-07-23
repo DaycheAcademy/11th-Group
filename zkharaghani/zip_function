@@ -1,0 +1,20 @@
+# To print odd index and even index of alphabetString in two columns.
+alphabetString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+for odd, even in zip(alphabetString[::2], alphabetString[1::2]):
+    print(odd, even)
+
+
+#************************************************
+# Reverse zip
+sampleAlphabet = "ABCDEF"
+sampleNumber = "123456"
+for num, char in zip(reversed(sampleNumber), reversed(sampleAlphabet)):
+    print('{}: {}'.format(num, char))
+
+# or
+
+print('=' * 40)
+sampleAlphabet = "ABCDEF"
+sampleNumber = "123456"
+for num, char in zip(sampleNumber[::-1], sampleAlphabet[::-1]):
+    print('{}: {}'.format(num, char))

@@ -1,0 +1,15 @@
+# This is the pythonic form
+
+number = "12,-20, .12, 34.9090890, -90.876, 10000000"
+print(sum([float(value) for value in number.split(",")]))
+
+
+# second solution
+
+number = "12,-20, .12, 34.9090890, -90.876, 10000000"
+summation = 0
+number1 = number.split(",")
+for ch in number1:
+    number2 = float(ch)
+    summation += number2
+print(summation)
