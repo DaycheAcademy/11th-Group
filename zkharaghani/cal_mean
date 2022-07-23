@@ -1,0 +1,21 @@
+# Mean of numbers
+
+
+sumValue = 0
+counter = 0
+while True:
+    inp = input("Enter an integer: ")
+    if inp.lower() == 'q' or inp.lower() == 'quit':
+        break
+    if not inp.isdigit():
+        continue
+    else:
+        sumValue += float(inp)
+        print(f'The sum of numbers is equal to {sumValue:.2f}')
+        counter += 1
+if counter:
+    meanValue = sumValue / counter
+    print(f'The mean of numbers is equal to {meanValue:.2f}')
+else:
+    meanValue = None
+print(meanValue)

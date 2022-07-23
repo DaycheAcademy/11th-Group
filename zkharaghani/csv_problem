@@ -1,0 +1,19 @@
+# We have a sipmle csv file containing emails, numbers, names, family names seperated by ';'. Our paln is to write each item in a separeted list. 
+
+with open('sample.csv') as csv_file:
+    emailList = []
+    numberList = []
+    nameList = []
+    familyList = []
+    for line in csv_file:
+        bigList = line.split(';')
+        # print(bigList)
+        emailList.append(bigList[0])
+        numberList.append((bigList[1]))
+        nameList.append((bigList[2]))
+        familyList.append((bigList[3].strip('\n')))
+
+    print(f'emailList = {emailList}')
+    print(f'numberList = {numberList}')
+    print(f'nameList = {nameList}')
+    print(f'familyList = {familyList}')

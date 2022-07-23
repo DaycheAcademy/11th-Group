@@ -1,0 +1,119 @@
+# Rock-Paper-Scissors Game
+import random
+from random import randint
+
+print("""
+Welcome to My Game
+Here You Have a Chance to Play 
+the Game of Rock-Paper-Scissors With Me.
+Rules Are Simple:
+    Rock Smashes Scissors
+    Scissors Cut Paper
+    Paper Covers Rock
+Hope you Enjoy It !
+*********************************************
+""")
+
+sysList = ['ROCK', 'PAPER', 'SCISSORS']
+secondSysList = ['R', 'ROCK', 'S', 'SCISSORS', 'P', 'PAPER']
+sysDict = {'R': 'ROCK', 'S': 'SCISSORS', 'P': 'PAPER'}
+userPoint = 0
+sysPoint = 0
+count = 0
+flag = True
+
+while True:
+    inp = input("Please type the value for winning score: ")
+    print(' ' * 50)
+    if not inp.isdigit():
+        print("I need an integer to carry on. Please type in an 'integer' value")
+    else:
+        while count < int(inp):
+            userChoice = input("Please select either Rock, Paper or Scissors (or QUIT to exit): ").upper()
+            userChoiceList = userChoice.strip().split(" ")
+            # userChoiceList is a list of elements of userChoice, separated by " ".
+            if userChoice.upper() in ['Q', 'QUIT']:
+                print('+' * 55)
+                print("Thank you for playing this game, I really enjoyed it !")
+                print('+' * 55)
+                flag = False
+                break
+            # The following line checks that if any elements of userChoiceList is in secondSysList.
+            check = any(item in userChoiceList for item in secondSysList)
+            if not check:
+                print(f"'{userChoice}' is not a valid choice. Please try again.")
+            else:
+                sysChoice = randint(0, 2)  # This gives random number between 0 - 2.
+                for item in userChoiceList:
+                    if item in secondSysList:
+                        if item == sysList[sysChoice] or item == sysList[sysChoice][0]:
+                            userPoint += 0
+                            sysPoint += 0
+                            print(f"""
+===============================================
+It's a tie! Seems our choices are the same.
+I had: '{sysList[sysChoice]}' and your choice was: '{item}'
+So no point for any of us this time!
+===============================================
+                            """)
+                            print(f"Computer Score is: '{sysPoint}'")
+                            print(f"Your Score is: '{userPoint}'")
+                            print(' ' * 50)
+                        if item != sysList[sysChoice] and item != sysList[sysChoice][0]:
+                            count += 1
+                            if (item in ['PAPER', 'P'] and sysList[sysChoice] in ['ROCK']) or \
+                                    (item in ['ROCK', 'R'] and sysList[sysChoice] in ['SCISSORS']) or \
+                                    (item in ['SCISSORS', 'S'] and sysList[sysChoice] in ['PAPER']):
+                                userPoint += 1
+                                sysPoint += 0
+                                print(f"""
+=============================================
+woohoo, I'm rolling in, come on, one more
+I had '{sysList[sysChoice]}' and your choice was: '{item}'
+=============================================
+""")
+                                print(f"Computer Score is: '{sysPoint}'")
+                                print(f"Your Score is: '{userPoint}'")
+                                print(' ' * 50)
+                            else:
+                                sysPoint += 1
+                                print(f"""
+=============================================
+clap, clap happiness ! I'm the best !
+I had '{sysList[sysChoice]}' and your choice was: '{item}'
+=============================================
+                                                       """)
+                                print(f"Computer Score is: '{sysPoint}'")
+                                print(f"Your Score is: '{userPoint}'")
+                                print(' ' * 50)
+        if userPoint > sysPoint:
+            print(' ' * 50)
+            print("*" * 50)
+            print("CONGRATULATIONS, REALLY GOOD JOB, YOU WON")
+            print("*" * 50)
+            print(' ' * 50)
+        if userPoint < sysPoint:
+            print(' ' * 50)
+            print("*" * 50)
+            print("WOOHOO, I HAVE WON THE GAME")
+            print("*" * 50)
+            print(' ' * 50)
+        if not flag:
+            break
+        while True:
+            anotherRound = input("Care to play another round? [yes/no] ")
+            if anotherRound.lower() not in ['yes', 'y', 'no', 'n']:
+                print("You Need to Tell me Exactly What to Do. I Need a 'Yes' or 'No'")
+                continue
+            elif anotherRound.lower() in ['yes', 'y']:
+                print("Alright, let's do one more !")
+                print(' ' * 50)
+                count = 0
+                userPoint = 0
+                sysPoint = 0
+                break
+            else:
+                flag = False
+                break
+        if not flag:
+            break

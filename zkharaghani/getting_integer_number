@@ -1,0 +1,14 @@
+# Ask user to enter a number until to enter an integer
+while True:
+    number = float(input("Enter an integer number: "))
+    if number == int(number):
+        print("Well done!")
+        break
+
+# *********************************************************
+
+while True:
+    number = input("Enter an integer number: ")
+    if number.isdigit():
+        print("Well done!")
+        break
